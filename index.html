@@ -1,55 +1,62 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html>
 
 <head>
-    <title>CcHomePro</title>
-
+    <title>Redis修改工具</title>
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
-    <h1>标题 1</h1>
-    <h2>标题 2</h2>
-    <h3>标题 3</h3>
-    <h4>标题 4</h4>
-    <h5>标题 5</h5>
-    <h6>标题 6</h6>
-    <h1 style="font-size:60px;color:red">标题 1</h1>
-    <p title="我是一个工具提示">这是一个段落。</p>
-    <h1>我的第一个标题</h1>
-    <p>我的第一个段落。</p>
-    <a href="https://www.w3ccoo.com">这是一个链接</a>
-    <img src="https://cc360428.github.io/assets/img/favicons/all.png" alt="W3Schools.com" width="104" height="142">
-    <img src="img_typo.jpg" alt="穿夹克的女孩">
-    <p style="color:red;">这是一个红色的段落。</p>
-    <a href=https://www.w3ccoo.com/html />访问我们的 HTML 教程</a>
-    <h1>这是标题 1</h1>
-    <p>这是一些文字。</p>
-    <hr>
-    <h2>这是标题 2</h2>
-    <p>这是一些其他的文本。</p>
-    <hr>
-    <p>这是一个<br>段落<br>有换行符。</p>
-    <pre>
-        白日依山尽，
-      
-        黄河入海流。
-      
-        欲穷千里目，
-      
-        更上一层楼。
-      </pre>
+    <h1>Redis修改工具</h1>
 
-    <h1 style="text-align:center;">居中标题</h1>
-    <p style="text-align:center;">居中段落。</p>
-    <i>这个文本为斜体。</i>
-    <em>这段文字被强调了</em>
-    <p>今天别忘了买<mark>牛奶</mark>。</p>
-    <p>我最喜欢的颜色是<del>蓝色</del>红色。</p>
-    <p>这是来自 WWF 网站的引述:</p>
-    <blockquote cite="http://www.worldwildlife.org/who/index.html">
-        近 60 年来，WWF 一直在保护自然的未来。 WWF 是世界领先的保护组织，在 100 个国家/地区开展工作，并得到美国超过 100 万会员和全球近 500 万会员的支持。
-    </blockquote>
+    <form>
+        <div class="form-group">
+            <label for="player-id">Player ID:</label>
+            <input type="text" id="player-id" name="player-id" required>
+        </div>
 
+        <div class="form-group">
+            <label for="vip">VIP:</label>
+            <input type="text" id="vip" name="vip">
+        </div>
+
+        <div class="form-group">
+            <label for="chip">Chip:</label>
+            <input type="text" id="chip" name="chip">
+        </div>
+
+        <div class="form-group">
+            <label for="nick">Nick:</label>
+            <input type="text" id="nick" name="nick">
+        </div>
+
+        <div class="form-group">
+            <label for="portrait">Portrait:</label>
+            <input type="text" id="portrait" name="portrait">
+        </div>
+
+        <div class="form-group radio-group">
+            <label for="unlock">Unlock:</label>
+
+            <label class="radio-label" for="unlock-yes"> <input type="radio" id="unlock-yes" name="unlock"
+                    value="yes">Yes</label>
+
+            <label class="radio-label" for="unlock-no"> <input type="radio" id="unlock-no" name="unlock" value="no"
+                    checked>No</label>
+        </div>
+
+        <div class="form-group">
+            <label for="other-id">Other ID:</label>
+            <input type="text" id="other-id" name="other-id">
+        </div>
+
+        <div class="form-group">
+            <label for="other-value">Other Value:</label>
+            <input type="text" id="other-value" name="other-value">
+        </div>
+
+        <input type="submit" value="Submit">
+    </form>
 </body>
 
 </html>

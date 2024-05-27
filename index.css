@@ -1,0 +1,55 @@
+body {
+    text-align: center;
+    background-color: #f2f2f2; /* 淡灰色背景 */
+  }
+  
+  form {
+    margin: 40px auto;
+    width: 500px;
+    margin-right: 480px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 5px;
+    margin-bottom: 10px;
+  }
+  
+  input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+  }
+
+  .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .form-group label {
+    margin-right: 10px;
+    width: 150px;
+    text-align: right;
+  }
+
+  .form-group input[type="text"] {
+    flex: 1;
+  }
+
+  .form-group.radio-group label {
+    margin-right: 5px;
+  }
+
+  .form-group.radio-group input[type="radio"] {
+    margin-right: 3px;
+  }
+
+  
