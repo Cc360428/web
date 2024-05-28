@@ -4,25 +4,43 @@
 <head>
     <title>Redis修改工具</title>
     <link rel="stylesheet" href="index.css">
+    <script src="index.js"></script>
 </head>
+<script>
+    window.addEventListener("DOMContentLoaded", () => {
+        selectPlatform();
+    });
+</script>
 
 <body>
     <h1>Redis修改工具</h1>
 
     <form>
         <div class="form-group">
-            <label for="player-id">Player ID:</label>
-            <input type="text" id="player-id" name="player-id" required>
+            <label for="platform">Select:</label>
+
+            <select name="platformId" id="platformId" onchange="selectPlatform()">
+                <option value="default">选择平台</option>
+            </select>
+
+            <select name="envId" id="envId" style="display: none;">
+                <option value="default">环境</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="player">Player ID:</label>
+            <input type="text" id="playerId" name="playerId" required onblur="checkDigit('playerId')">
         </div>
 
         <div class="form-group">
             <label for="vip">VIP:</label>
-            <input type="text" id="vip" name="vip">
+            <input type="text" id="vip" name="vip" onblur="checkDigit('vip')">
         </div>
 
-        <div class="form-group">
+        <div class=" form-group">
             <label for="chip">Chip:</label>
-            <input type="text" id="chip" name="chip">
+            <input type="text" id="chip" name="chip" onblur="checkDigit('chip')">
         </div>
 
         <div class="form-group">
@@ -47,12 +65,12 @@
 
         <div class="form-group">
             <label for="other-id">Other ID:</label>
-            <input type="text" id="other-id" name="other-id">
+            <input type="text" id="other-id" name="other-id" onblur="checkDigit('otherId')">
         </div>
 
         <div class="form-group">
-            <label for="other-value">Other Value:</label>
-            <input type="text" id="other-value" name="other-value">
+            <label for="otherValue">Other Value:</label>
+            <input type="text" id="otherValue" name="otherValue" onblur="checkDigit('otherValue')">
         </div>
 
         <input type="submit" value="Submit">
