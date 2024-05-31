@@ -5,6 +5,7 @@
     <title>Redis修改工具</title>
     <link rel="stylesheet" href="index.css">
     <script src="index.js"></script>
+    <script src="network.js"></script>
 </head>
 <script>
     window.addEventListener("DOMContentLoaded", () => {
@@ -13,24 +14,24 @@
 </script>
 
 <body>
-    <h1>Redis修改工具</h1>
+    <h1> <a href="/opt/code/github.com/Cc360428/web/index.html">Redis修改工具</a></h1>
 
-    <form>
+    <form id="updateRedis" method="post">
         <div class="form-group">
             <label for="platform">Select:</label>
 
-            <select name="platformId" id="platformId" onchange="selectPlatform()">
+            <select name="platform_id" id="platform_id" onchange="selectPlatform()">
                 <option value="default">选择平台</option>
-            </select>
+            </select> &nbsp&nbsp&nbsp
 
-            <select name="envId" id="envId" style="display: none;">
+            <select name="env_id" id="env_id" style="display: none;">
                 <option value="default">环境</option>
             </select>
         </div>
 
         <div class="form-group">
             <label for="player">Player ID:</label>
-            <input type="text" id="playerId" name="playerId" required onblur="checkDigit('playerId')">
+            <input type="text" id="player_id" name="player_id" required onblur="checkDigit('player_id')">
         </div>
 
         <div class="form-group">
@@ -64,17 +65,22 @@
         </div>
 
         <div class="form-group">
-            <label for="other-id">Other ID:</label>
-            <input type="text" id="other-id" name="other-id" onblur="checkDigit('otherId')">
+            <label for="other_id">Other ID:</label>
+            <input type="text" id="other_id" name="other_id" onblur="checkDigit('other_id')">
         </div>
 
         <div class="form-group">
-            <label for="otherValue">Other Value:</label>
-            <input type="text" id="otherValue" name="otherValue" onblur="checkDigit('otherValue')">
+            <label for="other_value">Other Value:</label>
+            <input type="text" id="other_value" name="other_value" onblur="checkDigit('other_value')">
         </div>
 
         <input type="submit" value="Submit">
     </form>
+
+    <script>
+        const form = document.getElementById('updateRedis');
+        form.addEventListener('submit', updateRedis);
+    </script>
 </body>
 
 </html>

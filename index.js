@@ -1,9 +1,43 @@
-function selectPlatform() {
-  const platforms = ["Thailand", "Indonesia", "Vietnam", "Malaysia", "Brazil"];
-  const envInfo = ["dev", "test", "uat", "pro"];
+function getRedisConf() {
+  const redisConfig = get("/get_redis", {}, {});
+  return redisConfig
+    .then((result) => {
+      platformsIn = Object.values(result.Platform);
+      envInfoIn = Object.values(result.EnvInfo);
+      return { id: platformsIn, envs: envInfoIn };
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+}
 
-  const platformSelect = document.getElementById("platformId");
-  const envSelect = document.getElementById("envId");
+function selectPlatform() {
+  let platforms = ["Thailand", "Indonesia", "Vietnam"];
+  let envInfo = [
+    ["Dev", "Dev2", "Test"],
+    ["Dev", "Test"],
+    ["Dev", "Test"],
+  ];
+
+  const redisConfig = get("/get_redis", {}, {});
+  redisConfig
+    .then((result) => {
+      platforms = Object.values(result.Platform);
+      envInfo = Object.values(result.EnvInfo);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });
+
+  // 单这里有问题 1 这里赋值失败
+
+  let s = getRedisConf();
+
+  console.log("asdfads", s.envs);
+  console.log("platforms:", platforms);
+
+  const platformSelect = document.getElementById("platform_id");
+  const envSelect = document.getElementById("env_id");
 
   console.log(platformSelect, envSelect);
   if (!platformSelect || !envSelect) {
@@ -37,7 +71,7 @@ function selectPlatform() {
     // Populate the environment dropdown based on the selected platform
     const selectedPlatform = platformSelect.value;
     if (selectedPlatform && selectedPlatform !== "default") {
-      envInfo.forEach((env) => {
+      envInfo[platforms.indexOf(platformSelect.value)].forEach((env) => {
         const option = document.createElement("option");
         option.value = env;
         option.text = env;
@@ -77,4 +111,28 @@ function checkDigit(inputId) {
   }
 
   return true; // 验证成功
+}
+
+async function updateRedis(event) {
+  event.preventDefault(); // 阻止表单的默认提交行为
+
+  const form = event.target;
+
+  const formData = new FormData(form);
+
+  // 将 FormData 转换为 JavaScript 对象
+  const formDataObj = Object.fromEntries(formData);
+
+  console.log("formData:", formDataObj);
+  // 将 JavaScript 对象转换为 JSON 字符串
+  // const endData = JSON.stringify(formDataObj);
+
+  try {
+    const response = await post("/update_info", formDataObj, {});
+    console.log("Redis 更新成功:", response);
+    alert("Redis 更新成功:", response);
+  } catch (error) {
+    // alert("Redis 更新失败:", error);
+    console.error("Redis 更新失败:", error);
+  }
 }
