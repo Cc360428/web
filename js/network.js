@@ -1,3 +1,5 @@
+const baseUrl = "http://172.12.10.189:8061";
+
 /**
  * 发送 POST 请求的封装函数
  * @param {string} url - 请求的 URL 地址
@@ -70,4 +72,4 @@ function get(url, params = {}, headers = {}) {
     });
 }
 
-const baseUrl = "http://172.12.10.188:8080";
+
