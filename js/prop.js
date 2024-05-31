@@ -16,11 +16,14 @@ function GetPropList() {
 
     // 假设从服务端获取的数据是 data 变量
     const data = [
-        { id: 1, name: 'VIP', other_info: '道具' },
-        { id: 2, name: 'Jane', other_info: 'Person' },
-        { id: 3, name: 'Bob', other_info: 'Person' },
-        { id: 4, name: 'Apple', other_info: 'Fruit' },
-        { id: 5, name: 'Banana', other_info: 'Fruit' },
+        { id: 1, name: 'VIP', other_info: '-' },
+        { id: 2, name: '筹码', other_info: '-' },
+        { id: 4, name: '经验', other_info: '-' },
+        { id: 13, name: '秤砣', other_info: '-' },
+        { id: 28, name: '改名卡', other_info: '-' },
+        { id: 102, name: 'Domino通行证标识', other_info: '-' },
+        { id: 103, name: 'Domino通行证等级', other_info: '-' },
+        { id: 118, name: '等级线', other_info: '-' },
     ];
 
     // 获取表格容器元素
