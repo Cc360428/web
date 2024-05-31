@@ -21,8 +21,6 @@ async function selectPlatform() {
         console.error("Error:", err);
     }
 
-    console.log("End--- platforms:", platforms);
-
     const platformSelect = document.getElementById("platform_id");
     const envSelect = document.getElementById("env_id");
 
@@ -72,7 +70,6 @@ async function selectPlatform() {
 }
 
 function checkDigit(inputId) {
-    console.log("inputId---", inputId);
 
     // 获取输入框的值
     const inputValue = document.getElementById(inputId);
@@ -84,9 +81,9 @@ function checkDigit(inputId) {
         return true;
     }
 
-    // 检查输入是否只包含数字
-    if (!/^\d+$/.test(getValue)) {
-        alert("必须是数字");
+    // 检查输入是否只包含数字且大于0
+    if (!/^\d+$/.test(getValue) || parseInt(getValue) <= 0) {
+        alert("输入必须是大于0的数字");
         inputValue.value = ""; // 清空输入框
         return false; // 验证失败
     }
@@ -97,29 +94,59 @@ function checkDigit(inputId) {
         return false;
     }
 
+
+    if (inputId === "other_value") {
+        console.log(inputId)
+        // 获取输入框的值
+        const otherId = document.getElementById("other_id");
+        const otherIdValue = otherId.value.trim();
+        if (parseInt(otherIdValue) === 1 && parseInt(getValue) > 30) {
+            alert("other_value 不能大于30");
+            return false;
+        }
+    }
+
     return true; // 验证成功
 }
 
 async function updateRedis(event) {
+
     event.preventDefault(); // 阻止表单的默认提交行为
-
-    const form = event.target;
-
-    const formData = new FormData(form);
-
     // 将 FormData 转换为 JavaScript 对象
-    const formDataObj = Object.fromEntries(formData);
+    const formData = Object.fromEntries(new FormData(event.target));
+    if (formData.platform_id.trim() === "default" || formData.env_id.trim() === "default") {
+        alert("请选择 平台 & 环境")
+        return
+    }
 
-    console.log("formData:", formDataObj);
-    // 将 JavaScript 对象转换为 JSON 字符串
-    // const endData = JSON.stringify(formDataObj);
+    if (formData.vip.trim() === "" && formData.chip.trim() === "" && formData.nick.trim() === "" && formData.portrait.trim() === "" && formData.unlock.trim() === "no" && formData.other_id.trim() === "" && formData.other_value.trim() === "") {
+        alert("至少修改一项")
+        return
+    }
+
+    // if (parseInt(formData.vip.trim()) < 0 ||
+    //     parseInt(formData.chip.trim()) < 0 ||
+    //     parseInt(formData.nick.trim()) < 0 ||
+    //     parseInt(formData.portrait.trim()) < 0 ||
+    //     parseInt(formData.other_id.trim()) < 0 ||
+    //     parseInt(formData.other_value.trim()) < 0) {
+    //     alert("不能<0")
+    //     return
+    // }
+
+    if (formData.other_id.trim() !== "" && formData.other_value.trim() === "") {
+        alert("OtherId 有必须OtherValue 也有值")
+        return
+    }
+
+    console.log("request:", formData);
 
     try {
-        const response = await post("/update_info", formDataObj, {});
+        const response = await post("/update_info", formData, {});
         console.log("Redis 更新成功:", response);
-        alert("Redis 更新成功:", response);
+        alert("Redis 更新成功!");
     } catch (error) {
-        // alert("Redis 更新失败:", error);
         console.error("Redis 更新失败:", error);
+        alert("Redis 更新失败!");
     }
 }

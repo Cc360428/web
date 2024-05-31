@@ -15,73 +15,76 @@
 </script>
 
 <body>
-    <h1> <a href="/">道具修改工具</a></h1>
+<h1><a href="/">Prop Modification Tool</a></h1>
 
-    <form id="updateRedis" method="post">
-        <div class="form-group">
-            <label for="platform">Select:</label>
 
-            <select name="platform_id" id="platform_id" onchange="selectPlatform()">
-                <option value="default">选择平台</option>
-            </select> &nbsp&nbsp&nbsp
+<form id="updateRedis" method="post">
+    <div class="form-group">
+        <label for="platform">Select:</label>
 
-            <select name="env_id" id="env_id" style="display: none;">
-                <option value="default">环境</option>
-            </select>
-        </div>
+        <select name="platform_id" id="platform_id" onchange="selectPlatform()">
+            <option value="default">Select Platform</option>
+        </select>
 
-        <div class="form-group">
-            <label for="player">Player ID:</label>
-            <input type="text" id="player_id" name="player_id" required onblur="checkDigit('player_id')">
-        </div>
+        <select name="env_id" id="env_id" style="display: none;">
+            <option value="default">Environment</option>
+        </select>
+    </div>
 
-        <div class="form-group">
-            <label for="vip">VIP:</label>
-            <input type="text" id="vip" name="vip" onblur="checkDigit('vip')">
-        </div>
+    <div class="form-group">
+        <label for="player">Player ID:</label>
+        <input type="text" id="player_id" name="player_id" placeholder="Required" required
+               onblur="checkDigit('player_id')">
+    </div>
 
-        <div class=" form-group">
-            <label for="chip">Chip:</label>
-            <input type="text" id="chip" name="chip" onblur="checkDigit('chip')">
-        </div>
+    <div class="form-group">
+        <label for="vip">VIP:</label>
+        <input type="text" id="vip" name="vip" placeholder="Must be 1-30 (Need to log in again)" onblur="checkDigit('vip')">
+    </div>
 
-        <div class="form-group">
-            <label for="nick">Nick:</label>
-            <input type="text" id="nick" name="nick">
-        </div>
+    <div class=" form-group">
+        <label for="chip">Chip:</label>
+        <input type="text" id="chip" name="chip" onblur="checkDigit('chip')">
+    </div>
 
-        <div class="form-group">
-            <label for="portrait">Portrait:</label>
-            <input type="text" id="portrait" name="portrait">
-        </div>
+    <div class="form-group">
+        <label for="nick">Nick:</label>
+        <input type="text" id="nick" name="nick">
+    </div>
 
-        <div class="form-group radio-group">
-            <label for="unlock">Unlock:</label>
+    <div class="form-group">
+        <label for="portrait">Portrait:</label>
+        <input type="text" id="portrait" name="portrait" placeholder="Example (https://*)">
+    </div>
 
-            <label class="radio-label" for="unlock-yes"> <input type="radio" id="unlock-yes" name="unlock"
-                    value="yes">Yes</label>
+    <div class="form-group radio-group">
+        <label for="unlock">Unlock:</label>
 
-            <label class="radio-label" for="unlock-no"> <input type="radio" id="unlock-no" name="unlock" value="no"
-                    checked>No</label>
-        </div>
+        <label class="radio-label" for="unlock-yes">
+            <input type="radio" id="unlock-yes" name="unlock" value="yes">Yes</label>
+        <label class="radio-label" for="unlock-no">
+            <input type="radio" id="unlock-no" name="unlock" value="no" checked>No</label>
+    </div>
 
-        <div class="form-group">
-            <label for="other_id">Other ID:</label>
-            <input type="text" id="other_id" name="other_id" onblur="checkDigit('other_id')">
-        </div>
 
-        <div class="form-group">
-            <label for="other_value">Other Value:</label>
-            <input type="text" id="other_value" name="other_value" onblur="checkDigit('other_value')">
-        </div>
+    <div class="form-group">
+        <label for="other_id"> <a href="/prop.html" target="_blank">Other ID</a>:</label>
+        <input type="text" id="other_id" name="other_id" placeholder="PropId" onblur="checkDigit('other_id')">
+    </div>
 
-        <input type="submit" value="Submit">
-    </form>
+    <div class="form-group">
+        <label for="other_value">Other Value:</label>
+        <input type="text" id="other_value" name="other_value" placeholder="PropIdNumber"
+               onblur="checkDigit('other_value')">
+    </div>
 
-    <script>
-        const form = document.getElementById('updateRedis');
-        form.addEventListener('submit', updateRedis);
-    </script>
+    <input type="submit" value="Update">
+</form>
+
+<script>
+    const form = document.getElementById('updateRedis');
+    form.addEventListener('submit', updateRedis);
+</script>
 </body>
 
 </html>
